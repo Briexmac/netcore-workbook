@@ -10,7 +10,7 @@ namespace IssueTracker.Domain.Contracts
 
         string Title { get; set; }
 
-        string Estimate { get; set; }
+        decimal Estimate { get; set; }
 
         string Description { get; set; }
 

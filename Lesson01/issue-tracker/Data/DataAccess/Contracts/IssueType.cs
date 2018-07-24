@@ -10,6 +10,7 @@ namespace IssueTracker.DataAccess.Contracts
         NotStarted = 0x00,
         InProgress = 0x01,
         InReview = 0x02,
-        Done = 0x04
+        Done = 0x04,
+        NewState = 0b111111,
     }
 }

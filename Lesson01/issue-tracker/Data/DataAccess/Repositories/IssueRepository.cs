@@ -51,11 +51,13 @@ namespace IssueTracker.Data.Repositories
             current.Title = translated.Title;
             current.Description = translated.Description;
             current.Estimate = translated.Estimate;
+            current.Type = translated.Type;
+
             // Capture the history of states
-            if ((current.Type & translated.Type) != translated.Type)
-            {
-                current.Type |= translated.Type;
-            }
+            //if ((current.Type & translated.Type) != translated.Type)
+            //{
+            //    current.Type |= translated.Type;
+            //}
 
             issues.AddOrUpdate(current.Id.Value, current, (id, existing) => current);
 
