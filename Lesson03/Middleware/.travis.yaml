@@ -1,0 +1,8 @@
+language: csharp
+mono: none
+dotnet: 2.1.1
+solution: BaseProject.sln
+script:
+  - dotnet restore
+  - dotnet build
+  - dotnet test BaseProject.Test/BaseProject.Test.csproj

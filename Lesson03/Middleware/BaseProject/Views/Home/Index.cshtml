@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="jumbotron">
+    <h1>Issue Tracker</h1>
+</div>
+<div class="row">
+    @{
+        var cardModel1 = new CardModel
+        {
+            Title = "Welcome to Issue Tracker",
+            Content = "Issue Tracker is an application for tracking ticket issues from origination to completion.Think Trello, but better(one day)!"
+        };
+        var cardModel2 = new CardModel
+        {
+            Title = "Build it from scratch",
+            Content = "We will be building this up from scratch though out the class, so think of ways to reuse what you create throughout the course."
+        };
+    }
+    @await Component.InvokeAsync("Card", cardModel1)
+    @await Component.InvokeAsync("Card", cardModel2)
+    
+    <div class="col-md-4">
+        <h2>Download it</h2>
+        <p>You can download the completed project from Austin Coding Academy GitHub.</p>
+        <p>
+            <!-- TODO: Project github link-->
+            <a class="btn btn-default"
+               href="https://github.com/AustinCodingAcademy/netcore-workbook">
+                See project source code &raquo;
+            </a>
+        </p>
+    </div>
+</div>
