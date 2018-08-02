@@ -1,0 +1,30 @@
+﻿@model BaseProject.Data.Models.Issue
+@{
+    var issueTask = Model.Tasks.FirstOrDefault();
+}
+
+<table class="table">
+
+    <tr>
+        <th>@Html.DisplayNameFor(model => issueTask.Title)</th>
+        <th>@Html.DisplayNameFor(model => issueTask.Description)</th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model.Tasks)
+    {
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => @Model.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => @Model.Description)
+            </td>
+            <td>
+                <a asp-controller="IssueTasks" asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+                <a asp-controller="IssueTasks" asp-action="Details" asp-route-id="@Model.Id">Details</a> |
+                <a asp-controller="IssueTasks" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+            </td>
+        </tr>
+    }
+</table>

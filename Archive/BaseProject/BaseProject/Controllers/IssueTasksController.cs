@@ -178,6 +178,8 @@ namespace BaseProject.Controllers
             return RedirectToParentIssue(issueTask.IssueId);
         }
 
+        #region Private
+
         private bool IssueTaskExists(int id)
         {
             return _context.IssueTasks.Any(e => e.Id == id);
@@ -187,5 +189,7 @@ namespace BaseProject.Controllers
         {
             return RedirectToAction("Details", "Issues", new { id = issueId });
         }
+
+        #endregion
     }
 }

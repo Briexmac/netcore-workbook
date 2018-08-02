@@ -26,7 +26,7 @@
             @Html.DisplayNameFor(model => model.Assignee)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Assignee.Id)
+            @Html.DisplayFor(model => model.Assignee.FullName)
         </dd>
 
         <dt>
@@ -34,32 +34,8 @@
             <a asp-route-issueId="@Model.Id" asp-route="CreateByIssueId"><i class="glyphicon-plus"></i></a>
         </dt>
         <dd>
-            <table class="table">
-                @{ 
-                    var issueTask = Model.Tasks.FirstOrDefault();
-                }
-                <tr>
-                    <th>@Html.DisplayNameFor(model => issueTask.Title)</th>
-                    <th>@Html.DisplayNameFor(model => issueTask.Description)</th>
-                    <th></th>
-                </tr>
-                @foreach (var item in Model.Tasks)
-                {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Title)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Description)
-                    </td>
-                    <td>
-                        <a asp-controller="IssueTasks" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                        <a asp-controller="IssueTasks" asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                        <a asp-controller="IssueTasks" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                    </td>
-                </tr>
-                }
-            </table>
+            @await Component.InvokeAsync("IssueTaskShort", Model)
+            @*<vc:issue-task-short issue="Model"></vc:issue-task-short>*@
         </dd>
     </dl>
 </div>

@@ -2,6 +2,11 @@
 
 @{
     ViewData["Title"] = "Index";
+    Func<int, Dictionary<string, string>> getIssuesModel = (userId) => new Dictionary<string, string>
+    {
+            { "userId", userId.ToString() },
+            { "issueId", "1" }
+    };
 }
 
 <h2>Index</h2>
@@ -39,7 +44,8 @@
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
+                <a asp-action="IssueTasksByUser" asp-all-route-data="@getIssuesModel(item.Id)">Assigned Issues</a>
             </td>
         </tr>
 }
