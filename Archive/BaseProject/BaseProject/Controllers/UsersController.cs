@@ -47,16 +47,6 @@ namespace BaseProject.Controllers
             return View(user);
         }
 
-        // GET Users/5/Issues/9/IssueTasks
-        [Route("{userId}/Issues/{issueId}/IssueTasks")]
-        public async Task<IActionResult> IssueTasksByUser(int userId, int issueId)
-        {
-            var user = await _context.Users.FirstAsync(u => u.Id == userId);
-            ViewBag.UsersFullName = user.FullName;
-            var issueTasks = await _context.IssueTasks.Where(t => t.AssigneeId == userId && t.IssueId == issueId).ToListAsync();
-            return View("IssueTasks", issueTasks);
-        }
-
         // GET: Users/Create
         [Route("Create")]
         public IActionResult Create()
