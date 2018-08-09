@@ -8,7 +8,7 @@ namespace BaseProject.Intrastructure
 {
     public class NotFoundException: Exception
     {
-        public NotFoundException(string username): base($"the UserName is '{username ?? "<UnknownUser")
+        public NotFoundException(string username): base($"the UserName is '{username ?? "<UnknownUser"));
         {
             
         }
