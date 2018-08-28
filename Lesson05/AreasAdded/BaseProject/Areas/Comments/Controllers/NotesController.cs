@@ -10,6 +10,7 @@ namespace BaseProject.Area.Controllers
     public class NotesController : Controller
     {
         // GET: Comment
+        [Route("")]
         [Route("Index")]
         public ActionResult Index()
         {
@@ -31,7 +32,7 @@ namespace BaseProject.Area.Controllers
         // POST: Comment/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Note note)
         {
             try
             {
