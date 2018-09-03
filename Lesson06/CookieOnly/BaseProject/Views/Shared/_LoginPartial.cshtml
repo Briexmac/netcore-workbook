@@ -1,0 +1,21 @@
+﻿@using Microsoft.AspNetCore.Http.Extensions
+
+@if (Context.User.Identity.Name != null)
+{
+    <form asp-area="" asp-controller="MyOwnUsers" asp-action="Logout" asp-route-returnUrl="@Context.Request.GetDisplayUrl()" method="post" id="logoutForm" class="navbar-right">
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a asp-area="" asp-controller="MyOwnUsers" asp-action="Index" title="Manage">Hello @Context.User.Identity.Name!</a>
+            </li>
+            <li>
+                <button type="submit" class="btn btn-link navbar-btn navbar-link">Logout</button>
+            </li>
+        </ul>
+    </form>
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li><a asp-area="" asp-controller="MyOwnUsers" asp-action="SignIn">Login</a></li>
+    </ul>
+}
