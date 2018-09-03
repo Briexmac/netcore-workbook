@@ -2,12 +2,14 @@
 using System.Threading.Tasks;
 using BaseProject.Data;
 using BaseProject.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace BaseProject.Controllers
 {
     [Route("Issue")]
+    [Authorize]
     public class IssueController : Controller
     {
         private readonly ApplicationContext _context;
@@ -20,6 +22,7 @@ namespace BaseProject.Controllers
         // GET: Issue
         [Route("")]
         [Route("/")]     // Doesn't combine, defines the route template ""
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Issues.ToListAsync());

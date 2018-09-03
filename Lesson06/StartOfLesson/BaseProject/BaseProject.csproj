@@ -10,7 +10,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Identity\Services\" />
     <Folder Include="Migrations\" />
+    <Folder Include="Migrations\MyIdentity\" />
   </ItemGroup>
 
 </Project>

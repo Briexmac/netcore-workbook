@@ -1,4 +1,5 @@
 ﻿using BaseProject.Data;
+using BaseProject.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -20,6 +21,7 @@ namespace BaseProject
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication();
             // Comment out if you do not have a local Sql Server installed
             services.AddDbContext<ApplicationContext>(opts => opts.UseSqlServer(Configuration.GetConnectionString("BaseProject")));
             // Uncomment if you do not have a local Sql Server installed
@@ -41,7 +43,7 @@ namespace BaseProject
             }
 
             app.UseStaticFiles();
-
+            app.UseAuthentication();
             app.UseMvc();
         }
 
@@ -51,6 +53,10 @@ namespace BaseProject
             using (var serviceScope = scopeFactory.CreateScope())
             {
                 using (var context = serviceScope.ServiceProvider.GetService<ApplicationContext>())
+                {
+                    context.Database.Migrate();
+                }
+                using (var context = serviceScope.ServiceProvider.GetService<MyIdentityContext>())
                 {
                     context.Database.Migrate();
                 }
