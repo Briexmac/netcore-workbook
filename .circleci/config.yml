@@ -1,0 +1,17 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: microsoft/dotnet:2.1-sdk
+    working_directory: ~/netcore-workbook
+    steps:
+      - checkout
+      - run:
+          name: Restore packages for all projects in solution
+          command: dotnet restore Lesson08/StartOfLesson
+      - run:
+          name: Build all projects in solution
+          command: dotnet build Lesson08/StartOfLesson
+      - run:
+          name: Run tests in test project
+          command: dotnet test Lesson08/StartOfLesson/BaseProject.Test/BaseProject.Test.csproj

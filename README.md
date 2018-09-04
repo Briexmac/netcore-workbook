@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/AustinCodingAcademy/netcore-workbook.svg?style=svg&circle-token=cbf815bc4c4b19c786a60bbbda438b1194360ee8)](https://circleci.com/gh/AustinCodingAcademy/netcore-workbook)
+
 ## netcore-workbook
 
 # Topics
@@ -28,8 +30,6 @@
     * Integration testing
 * Hosting a& Deployment
 * Checkpoint 2
-
-
 
 Recommended readings
 * Anti-pattern books
