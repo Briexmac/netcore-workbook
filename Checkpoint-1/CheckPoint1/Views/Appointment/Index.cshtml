@@ -1,0 +1,34 @@
+﻿@model IEnumerable<CheckPoint1.Models.Appointment>
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h2>Appointments</h2>
+    @ViewBag.message
+</p>
+<p>
+    <a asp-action="Create">Book New Appointment</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (CheckPoint1.Models.Appointment a in Model) {
+        <tr>
+            <td>
+                <h3>Customer: @a.CustomerFullName</h3>
+                <h3>Service Provider: @a.ServiceProviderFullName</h3>
+                <h3>Service: @a.Service</h3>
+                <h3>Date: @a.Day</h3>
+                <h3>Time: @a.Time</h3>
+                <br />
+                @Html.ActionLink("Delete", "Delete", new { id = a.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

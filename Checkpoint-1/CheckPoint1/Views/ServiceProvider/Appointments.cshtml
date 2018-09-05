@@ -1,0 +1,40 @@
+﻿@model CheckPoint1.Models.Appointment
+
+@{
+    ViewData["Title"] = "Appointments";
+}
+
+<h2>Appointments for @ViewData["ServiceProvider"]</h2>
+
+<p>
+    <a asp-controller="Appointment" asp-action="Create">Create New Appointment</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @*Initialize day out of the range of the enum, so that the condition evaluates to 'false' the first time.*@
+        @{ Appointment.Days day = (Appointment.Days)7; }
+        @foreach (var a in ViewData["ServiceProviderAppointments"] as List<Appointment>)
+        {
+            <tr>
+                <td>
+                    @*Display day only if it changes.*@
+                    @{ if (a.Day != day)
+                        {
+                            <h3>@a.Day</h3>
+                        }
+                    }
+                </td>
+                <td>
+                    <h3>@a.CustomerFullName at @a.Time for @a.Service</h3>
+                </td>
+            </tr>
+            @*Set day to that of current appointment in list.*@
+            day = a.Day;
+        }
+    </tbody>
+</table>

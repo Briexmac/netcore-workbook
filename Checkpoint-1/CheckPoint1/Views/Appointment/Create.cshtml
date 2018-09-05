@@ -1,0 +1,76 @@
+﻿@model CheckPoint1.Models.Appointment
+
+@{
+    ViewData["Title"] = "Create";
+}
+<h2>New Appointment</h2>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div class="form-group">
+                <label asp-for="ServiceProviderFullName" class="control-label">Service Provider Full Name:</label>
+                <input asp-for="ServiceProviderFullName" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="CustomerFullName" class="control-label">Customer Full Name:</label>
+                <input asp-for="CustomerFullName" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Service" class="control-label">Service:</label>
+                <select asp-for="Service" class="form-control">
+                    <option value="0">Swedish Massage</option>
+                    <option value="1">Deep Tissue Massage</option>
+                    <option value="2">Aroma Therapy Massage</option>
+                    <option value="3">Hot Stone Massage</option>
+                    <option value="4">Oxygen Infusion Facial</option>
+                    <option value="5">Microbrasion Facial</option>
+                    <option value="6">Collagen Mask</option>
+                    <option value="7">LED Light Therapy Facial</option>
+                    <option value="8">Body Wraps</option>
+                    <option value="9">Seaweed Body Wrap</option>
+                    <option value="10">Mineral Body Wrap</option>
+                    <option value="11">Cellulite Body Wrap</option>
+                    <option value="12">Body Scrub</option>
+                    <option value="13">Leg Waxing</option>
+                    <option value="14">Chest Waxing</option>
+                    <option value="15">Back Waxing</option>
+                    <option value="16">Bikini Waxing</option>
+                    <option value="17">Brazilian Waxing</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Day" class="control-label">Appointment Day:</label>
+                <select asp-for="Day" class="form-control">
+                    <option value="0">Sunday</option>
+                    <option value="1">Monday</option>
+                    <option value="2">Tuesday</option>
+                    <option value="3">Wednesday</option>
+                    <option value="4">Thursday</option>
+                    <option value="5">Friday</option>
+                    <option value="6">Saturday</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Time" class="control-label">Appointment Time:</label>
+                <select asp-for="Time" class="form-control">
+                    <option value="0">9 AM</option>
+                    <option value="1">10 AM</option>
+                    <option value="2">11 AM</option>
+                    <option value="3">Noon</option>
+                    <option value="4">1 PM</option>
+                    <option value="5">2 PM</option>
+                    <option value="6">3 PM</option>
+                    <option value="7">4 PM</option>
+                    <option value="8">5 PM</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to Appointments</a>
+</div>
