@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckPoint1", "Checkpoint1\Checkpoint1.csproj", "{CBF23AE0-897F-4F72-8C29-CB569B0E3ED7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Checkpoint1", "Checkpoint1\Checkpoint1.csproj", "{CBF23AE0-897F-4F72-8C29-CB569B0E3ED7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkpoint1.Tests", "Checkpoint1.Tests\Checkpoint1.Tests.csproj", "{DD374056-A140-4A5C-92F7-F095BFF196BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Checkpoint1.Tests", "Checkpoint1.Tests\Checkpoint1.Tests.csproj", "{DD374056-A140-4A5C-92F7-F095BFF196BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
