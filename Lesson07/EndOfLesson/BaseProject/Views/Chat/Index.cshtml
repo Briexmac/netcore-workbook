@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewData["Title"] = "Chat";
+}
+<script type="text/javascript">
+    "use strict";
+
+    var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
+
+    connection.on("OnSendMessage", function (username, message) {
+        var newMessage = `<li class="list-group-item">
+            <div>
+                ${username} - ${message}
+            </div>
+        </li>`;
+        $("#messages").appendTo($.parseHTML(newMessage));
+    });
+
+    connection.start().catch(function (err) {
+        return console.error(err.toString());
+    });
+
+    document.getElementById("sendButton").addEventListener("click", function (event) {
+        var user = document.getElementById("userInput").value;
+        var message = document.getElementById("messageInput").value;
+        connection.invoke("SendMessage", user, message).catch(function (err) {
+            return console.error(err.toString());
+        });
+        event.preventDefault();
+    });
+</script>
+<style>
+    .list-group {
+        height: 300px;
+        margin-bottom: 100px;
+        overflow: scroll;
+        -webkit-overflow-scrolling: touch;
+    }
+</style>
+<h2>In App Chat</h2>
+<div class="container">
+    <ul id="messages" class="list-group" style="max-height: 80vh;">
+        <li class="list-group-item">
+            <div>
+                Cras justo odio
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div>
+                Dapibus ac facilisis in
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div>
+                Cras justo odio
+            </div>
+        </li>
+    </ul>
+    <input id="userInput" type="text" value="@User.Identity.Name" readonly />
+    <input id="messageInput" type="text" />
+    <input id="sendButton" type="button" value="Send" />
+</div>
