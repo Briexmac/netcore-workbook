@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CheckPoint1.Models
+namespace Spatastic.Models
 {
     public interface IRepository
     {

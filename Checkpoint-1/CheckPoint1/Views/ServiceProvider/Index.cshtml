@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CheckPoint1.Models.ServiceProvider>
+﻿@model IEnumerable<Spatastic.Models.ServiceProvider>
 
 @{
     ViewData["Title"] = "ServiceProviders";
@@ -16,7 +16,7 @@
         </tr>
     </thead>
     <tbody>
-@foreach (CheckPoint1.Models.ServiceProvider s in Model) {
+@foreach (Spatastic.Models.ServiceProvider s in Model) {
         <tr>
             <td>
                 <h3>@Html.ActionLink(@s.FullName, "Appointments", new { id = s.Id })</h3>

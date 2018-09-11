@@ -1,4 +1,4 @@
-﻿namespace CheckPoint1.Models
+﻿namespace Spatastic.Models
 {
     public class ErrorViewModel
     {

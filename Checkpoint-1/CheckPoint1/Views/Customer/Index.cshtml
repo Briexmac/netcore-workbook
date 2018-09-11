@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CheckPoint1.Models.Customer>
+﻿@model IEnumerable<Spatastic.Models.Customer>
 
 @{
     ViewData["Title"] = "Customers";
@@ -16,7 +16,7 @@
         </tr>
     </thead>
     <tbody>
-@foreach (CheckPoint1.Models.Customer c in Model) {
+@foreach (Spatastic.Models.Customer c in Model) {
         <tr>
             <td>
                 <h3>@c.FullName</h3>

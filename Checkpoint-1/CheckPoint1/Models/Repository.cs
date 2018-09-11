@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CheckPoint1.Models
+namespace Spatastic.Models
 {
     public class Repository : IRepository
     {

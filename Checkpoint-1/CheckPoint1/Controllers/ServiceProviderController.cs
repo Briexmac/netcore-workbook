@@ -1,9 +1,9 @@
-﻿using CheckPoint1.Models;
+﻿using Spatastic.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CheckPoint1.Controllers
+namespace Spatastic.Controllers
 {
     public class ServiceProviderController : Controller
     {

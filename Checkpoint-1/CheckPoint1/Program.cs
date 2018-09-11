@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
-namespace CheckPoint1
+namespace Spatastic
 {
     public class Program
     {
