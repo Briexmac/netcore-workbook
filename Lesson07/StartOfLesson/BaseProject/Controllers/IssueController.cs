@@ -1,8 +1,10 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using BaseProject.Data;
+using BaseProject.Hubs;
 using BaseProject.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 
 namespace BaseProject.Controllers
@@ -11,10 +13,12 @@ namespace BaseProject.Controllers
     public class IssueController : Controller
     {
         private readonly ApplicationContext _context;
+        private readonly IHubContext<NotificationHub> _hubContext ;
 
-        public IssueController(ApplicationContext context)
+        public IssueController(ApplicationContext context, IHubContext<NotificationHub> hubContext)
         {
             _context = context;
+            _hubContext = hubContext;
         }
 
         // GET: Issue
@@ -63,6 +67,7 @@ namespace BaseProject.Controllers
             {
                 _context.Add(issue);
                 await _context.SaveChangesAsync();
+                await _hubContext.Clients.All.SendAsync("OnIssueCreate", issue);
                 return RedirectToAction(nameof(Index));
             }
             return View(issue);

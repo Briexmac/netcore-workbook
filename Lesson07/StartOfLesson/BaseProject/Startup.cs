@@ -1,4 +1,5 @@
 ﻿using BaseProject.Data;
+using BaseProject.Hubs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -20,11 +21,13 @@ namespace BaseProject
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             // Comment out if you do not have a local Sql Server installed
             services.AddDbContext<ApplicationContext>(opts => opts.UseSqlServer(Configuration.GetConnectionString("BaseProject")));
             // Uncomment if you do not have a local Sql Server installed
             //services.AddDbContext<ApplicationContext>(opts => opts.UseSqlServer(Configuration.GetConnectionString("BaseProjectHosted")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,20 +44,25 @@ namespace BaseProject
             }
 
             app.UseStaticFiles();
-
-            app.UseMvc();
+            app.UseSignalR(conf =>
+          {
+              app.UseSignalR(routes =>
+              {
+                  routes.MapHub<NotificationHub>("/notificationHub");
+              });
+              app.UseMvc();
+          });
         }
-
-        private void EnsureDatabaseUpdated(IApplicationBuilder app)
-        {
-            var scopeFactory = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>();
-            using (var serviceScope = scopeFactory.CreateScope())
+            private void EnsureDatabaseUpdated(IApplicationBuilder app)
             {
-                using (var context = serviceScope.ServiceProvider.GetService<ApplicationContext>())
+                var scopeFactory = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>();
+                using (var serviceScope = scopeFactory.CreateScope())
                 {
-                    context.Database.Migrate();
+                    using (var context = serviceScope.ServiceProvider.GetService<ApplicationContext>())
+                    {
+                        context.Database.Migrate();
+                    }
                 }
             }
         }
     }
-}
